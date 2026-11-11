@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236366f1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KeepTrackAI — Intelligent Proctored Class Platform</title>
+    <!-- Tailwind CSS CDN for instant robust styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- TensorFlow.js, COCO-SSD & BlazeFace for Real-Time Client-Side Object, Phone & Face Detection -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd@2.2.3/dist/coco-ssd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/blazeface"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              slate: {
+                950: '#060913',
+                900: '#0f172a',
+                850: '#131d33',
+                800: '#1e293b',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: #060913;
+        color: #f8fafc;
+      }
+      code, pre, .font-mono {
+        font-family: 'JetBrains Mono', monospace;
+      }
+    </style>
+  </head>
+  <body class="bg-slate-950 text-slate-100 min-h-screen">
+    <div id="root">
+      <!-- Fallback when opened as raw file:// instead of http://localhost:5173 -->
+      <noscript>
+        <div style="padding: 40px; text-align: center; color: white;">
+          Please enable JavaScript and open via <a href="http://localhost:5173" style="color: #818cf8;">http://localhost:5173</a>.
+        </div>
+      </noscript>
+    </div>
+
+    <script>
+      // Friendly helper if user opens via file:/// path directly
+      if (window.location.protocol === 'file:') {
+        window.addEventListener('DOMContentLoaded', function() {
+          var root = document.getElementById('root');
+          if (root) {
+            root.innerHTML = `
+              <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; text-align:center; padding:24px; background:#060913;">
+                <div style="background:#0f172a; border:1px solid #1e293b; padding:36px; border-radius:20px; max-width:540px; box-shadow:0 25px 50px -12px rgba(0,0,0,0.5);">
+                  <div style="width:52px; height:52px; border-radius:14px; background:rgba(99,102,241,0.15); border:1px solid rgba(99,102,241,0.3); display:flex; align-items:center; justify-content:center; margin:0 auto 16px auto; color:#818cf8; font-size:24px;">
+                    🛡️
+                  </div>
+                  <h2 style="color:#ffffff; font-size:20px; font-weight:700; margin-bottom:8px;">KeepTrackAI Local Server is Ready</h2>
+                  <p style="color:#94a3b8; font-size:14px; line-height:1.6; margin-bottom:20px;">
+                    You opened the file directly from your disk (<code style="background:#1e293b; padding:2px 6px; border-radius:6px; color:#e2e8f0; font-size:12px;">file:///</code>). Modern browsers block React and TypeScript modules on raw file paths.
+                  </p>
+                  <p style="color:#cbd5e1; font-size:14px; margin-bottom:24px;">
+                    Click the button below to access the live app on your local dev server:
+                  </p>
+                  <a href="http://localhost:5173" style="display:inline-block; background:linear-gradient(to right, #6366f1, #8b5cf6); color:#ffffff; padding:12px 28px; border-radius:12px; text-decoration:none; font-weight:600; font-size:14px; box-shadow:0 10px 15px -3px rgba(99,102,241,0.3);">
+                    Open http://localhost:5173 ➔
+                  </a>
+                </div>
+              </div>
+            `;
+          }
+        });
+      }
+    </script>
+
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
